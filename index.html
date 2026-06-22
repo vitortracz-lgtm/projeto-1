@@ -1,95 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sport Sneakers - Loja de Tênis</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Milagres Eucarísticos</title>
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      background: #f5f1e8;
+      color: #2c2c2c;
     }
 
     header {
-      background: #111;
+      background: #7a4f2b;
       color: white;
       padding: 20px;
       text-align: center;
     }
 
-    .container {
-      padding: 20px;
-      max-width: 1100px;
+    nav {
+      background: #5c3b20;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 30px;
+      max-width: 900px;
       margin: auto;
-    }
-
-    .filters {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .filters button {
-      padding: 10px 15px;
-      margin: 5px;
-      border: none;
-      cursor: pointer;
-      background: #222;
-      color: white;
-      border-radius: 5px;
-    }
-
-    .filters button:hover {
-      background: #555;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
     }
 
     .card {
       background: white;
       padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-
-    .price {
-      color: green;
-      font-weight: bold;
-      margin: 10px 0;
-    }
-
-    .btn {
-      background: black;
-      color: white;
-      padding: 10px;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    .btn:hover {
-      background: #444;
+      margin: 15px 0;
+      border-left: 5px solid #7a4f2b;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-      background: #111;
+      padding: 15px;
+      background: #7a4f2b;
       color: white;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #7a4f2b;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background: #5c3b20;
     }
   </style>
 </head>
@@ -97,67 +78,70 @@
 <body>
 
 <header>
-  <h1>Sport Sneakers</h1>
-  <p>Os melhores tênis esportivos para você</p>
+  <h1>Milagres Eucarísticos</h1>
+  <p>Fatos históricos relatados pela tradição católica</p>
 </header>
 
-<div class="container">
+<nav>
+  <a href="#sobre">Sobre</a>
+  <a href="#milagres">Milagres</a>
+  <a href="#curiosidade">Curiosidade</a>
+</nav>
 
-  <div class="filters">
-    <button onclick="filterProducts('all')">Todos</button>
-    <button onclick="filterProducts('corrida')">Corrida</button>
-    <button onclick="filterProducts('basquete')">Basquete</button>
-    <button onclick="filterProducts('casual')">Casual</button>
+<section id="sobre">
+  <h2>O que são Milagres Eucarísticos?</h2>
+  <p>
+    Milagres Eucarísticos são eventos extraordinários associados à Eucaristia,
+    nos quais, segundo a tradição católica, a hóstia consagrada manifesta sinais
+    visíveis relacionados ao corpo e sangue de Cristo.
+  </p>
+</section>
+
+<section id="milagres">
+  <h2>Milagres conhecidos</h2>
+
+  <div class="card">
+    <h3>Milagre de Lanciano (Itália)</h3>
+    <p>Um dos mais antigos registros, onde a hóstia teria se transformado em carne e sangue.</p>
   </div>
 
-  <div class="grid" id="productGrid">
-
-    <div class="card" data-category="corrida">
-      <img src="https://images.unsplash.com/photo-1600269452121-4f2416e55c28" />
-      <h3>Tênis Running Pro</h3>
-      <p class="price">R$ 299,90</p>
-      <button class="btn">Comprar</button>
-    </div>
-
-    <div class="card" data-category="basquete">
-      <img src="https://images.unsplash.com/photo-1606813907291-d86efa9b94db" />
-      <h3>Basket Force X</h3>
-      <p class="price">R$ 399,90</p>
-      <button class="btn">Comprar</button>
-    </div>
-
-    <div class="card" data-category="casual">
-      <img src="https://images.unsplash.com/photo-1528701800489-20be3c2ea4c9" />
-      <h3>Street Casual One</h3>
-      <p class="price">R$ 199,90</p>
-      <button class="btn">Comprar</button>
-    </div>
-
-    <div class="card" data-category="corrida">
-      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" />
-      <h3>Speed Run 2.0</h3>
-      <p class="price">R$ 349,90</p>
-      <button class="btn">Comprar</button>
-    </div>
-
+  <div class="card">
+    <h3>Milagre de Bolsena (Itália)</h3>
+    <p>Um sacerdote duvidava da presença real de Cristo e viu a hóstia sangrar durante a missa.</p>
   </div>
-</div>
+
+  <div class="card">
+    <h3>Milagre de Santarém (Portugal)</h3>
+    <p>Relato de uma hóstia que começou a sangrar após ser roubada e escondida.</p>
+  </div>
+
+  <div class="card">
+    <h3>Milagre de Buenos Aires (Argentina)</h3>
+    <p>Hóstias que teriam apresentado transformação em tecido cardíaco, segundo estudos divulgados.</p>
+  </div>
+</section>
+
+<section id="curiosidade">
+  <h2>Curiosidade</h2>
+  <p id="textoCurioso">Clique no botão para ver uma curiosidade.</p>
+  <button onclick="mostrarCuriosidade()">Mostrar curiosidade</button>
+</section>
 
 <footer>
-  <p>© 2026 Sport Sneakers - Todos os direitos reservados</p>
+  <p>Site educativo sobre tradições religiosas</p>
 </footer>
 
 <script>
-  function filterProducts(category) {
-    let cards = document.querySelectorAll(".card");
+  const curiosidades = [
+    "Alguns milagres eucarísticos são investigados por séculos.",
+    "Lanciano é considerado o primeiro milagre eucarístico reconhecido.",
+    "A Igreja Católica estuda esses eventos com cautela e rigor.",
+    "Muitos relatos ocorreram durante dúvidas de fé de sacerdotes."
+  ];
 
-    cards.forEach(card => {
-      if (category === "all") {
-        card.style.display = "block";
-      } else {
-        card.style.display = card.dataset.category === category ? "block" : "none";
-      }
-    });
+  function mostrarCuriosidade() {
+    const index = Math.floor(Math.random() * curiosidades.length);
+    document.getElementById("textoCurioso").innerText = curiosidades[index];
   }
 </script>
 
