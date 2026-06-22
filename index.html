@@ -1,97 +1,115 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>1001 Itens Explicados</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bloco de Notas</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  width: 90%;
+  max-width: 700px;
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+
+h1 {
+  text-align: center;
+  color: #38bdf8;
+}
+
+textarea {
+  width: 100%;
+  height: 300px;
+  padding: 15px;
+  border: none;
+  outline: none;
+  resize: none;
+  border-radius: 8px;
+  font-size: 16px;
   background: #0b1220;
   color: white;
 }
 
-header {
-  text-align: center;
-  padding: 20px;
-  background: #111a2e;
-}
-
-h1 {
-  color: #4cc9f0;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-
-.card {
-  background: #16213e;
-  padding: 15px;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: scale(1.05);
-}
-
-svg {
-  width: 100%;
-  height: 120px;
-  background: #0f172a;
-  border-radius: 8px;
-}
-
-.title {
-  color: #4cc9f0;
-  font-weight: bold;
+.buttons {
+  display: flex;
+  justify-content: space-between;
   margin-top: 10px;
+}
+
+button {
+  flex: 1;
+  margin: 5px;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.save {
+  background: #38bdf8;
+}
+
+.clear {
+  background: #ef4444;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>📘 Site dos 1001 Itens</h1>
-  <p>Explicações + desenhos automáticos via código</p>
-</header>
+<div class="container">
+  <h1>📝 Bloco de Notas</h1>
 
-<div class="container" id="container"></div>
+  <textarea id="note" placeholder="Escreva suas anotações aqui..."></textarea>
+
+  <div class="buttons">
+    <button class="save" onclick="salvar()">Salvar</button>
+    <button class="clear" onclick="limpar()">Limpar</button>
+  </div>
+</div>
 
 <script>
-// 🎯 Função para gerar "desenho" simples
-function desenho(i) {
-  const cor = ["#4cc9f0", "#f72585", "#b5179e", "#7209b7", "#4361ee"][i % 5];
+// Carregar nota salva
+window.onload = function () {
+  document.getElementById("note").value =
+    localStorage.getItem("nota") || "";
+};
 
-  return `
-  <svg viewBox="0 0 100 100">
-    <circle cx="50" cy="50" r="${20 + (i % 30)}" fill="${cor}" />
-    <rect x="10" y="10" width="20" height="20" fill="white" opacity="0.3"/>
-  </svg>
-  `;
+// Salvar nota automaticamente
+document.getElementById("note").addEventListener("input", function () {
+  localStorage.setItem("nota", this.value);
+});
+
+// Botão salvar
+function salvar() {
+  localStorage.setItem("nota", document.getElementById("note").value);
+  alert("Nota salva com sucesso!");
 }
 
-// 📦 Criação dos 1001 itens
-const container = document.getElementById("container");
-
-for (let i = 1; i <= 1001; i++) {
-
-  const div = document.createElement("div");
-  div.className = "card";
-
-  div.innerHTML = `
-    ${desenho(i)}
-    <div class="title">Item ${i}</div>
-    <p>Explicação do item ${i}: este é um elemento automático gerado pelo sistema, com lógica de programação.</p>
-  `;
-
-  container.appendChild(div);
+// Botão limpar
+function limpar() {
+  document.getElementById("note").value = "";
+  localStorage.removeItem("nota");
 }
 </script>
 
