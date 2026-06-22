@@ -1,116 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bloco de Notas</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Milagres Eucarísticos</title>
 
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f4f4;
+      color: #333;
+    }
 
-.container {
-  width: 90%;
-  max-width: 700px;
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
+    header {
+      background: #6a1b9a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
 
-h1 {
-  text-align: center;
-  color: #38bdf8;
-}
+    header h1 {
+      margin: 0;
+    }
 
-textarea {
-  width: 100%;
-  height: 300px;
-  padding: 15px;
-  border: none;
-  outline: none;
-  resize: none;
-  border-radius: 8px;
-  font-size: 16px;
-  background: #0b1220;
-  color: white;
-}
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
 
-.buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 10px;
-}
+    .intro {
+      text-align: center;
+      margin-bottom: 30px;
+    }
 
-button {
-  flex: 1;
-  margin: 5px;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
 
-.save {
-  background: #38bdf8;
-}
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
 
-.clear {
-  background: #ef4444;
-  color: white;
-}
+    .card:hover {
+      transform: scale(1.03);
+    }
 
-button:hover {
-  opacity: 0.8;
-}
-</style>
+    .card h3 {
+      margin-top: 0;
+      color: #6a1b9a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #222;
+      color: white;
+      margin-top: 30px;
+    }
+
+    button {
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #4a1170;
+    }
+  </style>
 </head>
 
 <body>
 
+<header>
+  <h1>Milagres Eucarísticos</h1>
+  <p>Conheça alguns dos mais conhecidos milagres da Eucaristia</p>
+</header>
+
 <div class="container">
-  <h1>📝 Bloco de Notas</h1>
 
-  <textarea id="note" placeholder="Escreva suas anotações aqui..."></textarea>
-
-  <div class="buttons">
-    <button class="save" onclick="salvar()">Salvar</button>
-    <button class="clear" onclick="limpar()">Limpar</button>
+  <div class="intro">
+    <p>Clique no botão para ver os milagres registrados na história da Igreja.</p>
+    <button onclick="mostrarMilagres()">Mostrar Milagres</button>
   </div>
+
+  <div class="grid" id="grid"></div>
+
 </div>
 
+<footer>
+  © 2026 - Site de Milagres Eucarísticos
+</footer>
+
 <script>
-// Carregar nota salva
-window.onload = function () {
-  document.getElementById("note").value =
-    localStorage.getItem("nota") || "";
-};
+  const milagres = [
+    {
+      nome: "Milagre de Lanciano",
+      pais: "Itália",
+      descricao: "Um dos mais antigos milagres eucarísticos conhecidos, onde a hóstia se transformou em carne e o vinho em sangue."
+    },
+    {
+      nome: "Milagre de Bolsena",
+      pais: "Itália",
+      descricao: "Durante uma missa, uma hóstia começou a sangrar, reforçando a fé na presença real de Cristo."
+    },
+    {
+      nome: "Milagre de Santarém",
+      pais: "Portugal",
+      descricao: "Uma hóstia consagrada foi encontrada sangrando e preservada até hoje como relíquia."
+    },
+    {
+      nome: "Milagre de Buenos Aires",
+      pais: "Argentina",
+      descricao: "Hóstias que se transformaram em tecido cardíaco foram estudadas cientificamente."
+    },
+    {
+      nome: "Milagre de Tixtla",
+      pais: "México",
+      descricao: "Uma hóstia começou a liberar substância semelhante a sangue durante a exposição."
+    }
+  ];
 
-// Salvar nota automaticamente
-document.getElementById("note").addEventListener("input", function () {
-  localStorage.setItem("nota", this.value);
-});
+  function mostrarMilagres() {
+    const grid = document.getElementById("grid");
+    grid.innerHTML = "";
 
-// Botão salvar
-function salvar() {
-  localStorage.setItem("nota", document.getElementById("note").value);
-  alert("Nota salva com sucesso!");
-}
+    milagres.forEach(m => {
+      const card = document.createElement("div");
+      card.className = "card";
 
-// Botão limpar
-function limpar() {
-  document.getElementById("note").value = "";
-  localStorage.removeItem("nota");
-}
+      card.innerHTML = `
+        <h3>${m.nome}</h3>
+        <p><strong>País:</strong> ${m.pais}</p>
+        <p>${m.descricao}</p>
+      `;
+
+      grid.appendChild(card);
+    });
+  }
 </script>
 
 </body>
