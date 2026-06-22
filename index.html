@@ -1,134 +1,98 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Loja de Carros</title>
+<meta charset="UTF-8">
+<title>1001 Itens Explicados</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0b1220;
+  color: white;
+}
 
-    header {
-      background: #1e293b;
-      padding: 20px;
-      text-align: center;
-    }
+header {
+  text-align: center;
+  padding: 20px;
+  background: #111a2e;
+}
 
-    header h1 {
-      margin: 0;
-      color: #38bdf8;
-    }
+h1 {
+  color: #4cc9f0;
+}
 
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 20px;
-      gap: 20px;
-    }
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
 
-    .card {
-      background: #1e293b;
-      border-radius: 10px;
-      width: 280px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.5);
-      transition: transform 0.3s;
-    }
+.card {
+  background: #16213e;
+  padding: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
 
-    .card:hover {
-      transform: scale(1.05);
-    }
+.card:hover {
+  transform: scale(1.05);
+}
 
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
+svg {
+  width: 100%;
+  height: 120px;
+  background: #0f172a;
+  border-radius: 8px;
+}
 
-    .card-content {
-      padding: 15px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      color: #38bdf8;
-    }
-
-    .card button {
-      background: #38bdf8;
-      border: none;
-      padding: 10px;
-      width: 100%;
-      cursor: pointer;
-      font-weight: bold;
-      border-radius: 5px;
-    }
-
-    .card button:hover {
-      background: #0ea5e9;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #1e293b;
-      margin-top: 20px;
-    }
-  </style>
+.title {
+  color: #4cc9f0;
+  font-weight: bold;
+  margin-top: 10px;
+}
+</style>
 </head>
 
 <body>
 
 <header>
-  <h1>🚗 Loja de Carros Online</h1>
-  <p>Escolha seu carro dos sonhos</p>
+  <h1>📘 Site dos 1001 Itens</h1>
+  <p>Explicações + desenhos automáticos via código</p>
 </header>
 
-<div class="container">
-
-  <div class="card">
-    <img src="https://source.unsplash.com/400x300/?car,sport" />
-    <div class="card-content">
-      <h3>Carro Esportivo</h3>
-      <p>Velocidade e estilo em um só carro.</p>
-      <button onclick="comprar('Carro Esportivo')">Comprar</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="https://source.unsplash.com/400x300/?car,luxury" />
-    <div class="card-content">
-      <h3>Carro Luxo</h3>
-      <p>Conforto e elegância premium.</p>
-      <button onclick="comprar('Carro Luxo')">Comprar</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <img src="https://source.unsplash.com/400x300/?car,suv" />
-    <div class="card-content">
-      <h3>SUV Moderno</h3>
-      <p>Ideal para família e viagens.</p>
-      <button onclick="comprar('SUV Moderno')">Comprar</button>
-    </div>
-  </div>
-
-</div>
-
-<footer>
-  <p>© 2026 Loja de Carros - Todos os direitos reservados</p>
-</footer>
+<div class="container" id="container"></div>
 
 <script>
-  function comprar(nome) {
-    alert("Você escolheu: " + nome + " 🚗");
-  }
+// 🎯 Função para gerar "desenho" simples
+function desenho(i) {
+  const cor = ["#4cc9f0", "#f72585", "#b5179e", "#7209b7", "#4361ee"][i % 5];
+
+  return `
+  <svg viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="${20 + (i % 30)}" fill="${cor}" />
+    <rect x="10" y="10" width="20" height="20" fill="white" opacity="0.3"/>
+  </svg>
+  `;
+}
+
+// 📦 Criação dos 1001 itens
+const container = document.getElementById("container");
+
+for (let i = 1; i <= 1001; i++) {
+
+  const div = document.createElement("div");
+  div.className = "card";
+
+  div.innerHTML = `
+    ${desenho(i)}
+    <div class="title">Item ${i}</div>
+    <p>Explicação do item ${i}: este é um elemento automático gerado pelo sistema, com lógica de programação.</p>
+  `;
+
+  container.appendChild(div);
+}
 </script>
 
 </body>
