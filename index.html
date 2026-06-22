@@ -3,74 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Milagres Eucarísticos</title>
+  <title>Loja de Carros</title>
 
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f1e8;
-      color: #2c2c2c;
+      background: #0f172a;
+      color: white;
     }
 
     header {
-      background: #7a4f2b;
-      color: white;
+      background: #1e293b;
       padding: 20px;
       text-align: center;
     }
 
-    nav {
-      background: #5c3b20;
+    header h1 {
+      margin: 0;
+      color: #38bdf8;
+    }
+
+    .container {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      padding: 10px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      padding: 30px;
-      max-width: 900px;
-      margin: auto;
+      padding: 20px;
+      gap: 20px;
     }
 
     .card {
-      background: white;
+      background: #1e293b;
+      border-radius: 10px;
+      width: 280px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
       padding: 15px;
-      margin: 15px 0;
-      border-left: 5px solid #7a4f2b;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: #38bdf8;
+    }
+
+    .card button {
+      background: #38bdf8;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+
+    .card button:hover {
+      background: #0ea5e9;
     }
 
     footer {
       text-align: center;
       padding: 15px;
-      background: #7a4f2b;
-      color: white;
+      background: #1e293b;
       margin-top: 20px;
-    }
-
-    button {
-      padding: 10px 15px;
-      border: none;
-      background: #7a4f2b;
-      color: white;
-      cursor: pointer;
-      border-radius: 5px;
-    }
-
-    button:hover {
-      background: #5c3b20;
     }
   </style>
 </head>
@@ -78,70 +86,48 @@
 <body>
 
 <header>
-  <h1>Milagres Eucarísticos</h1>
-  <p>Fatos históricos relatados pela tradição católica</p>
+  <h1>🚗 Loja de Carros Online</h1>
+  <p>Escolha seu carro dos sonhos</p>
 </header>
 
-<nav>
-  <a href="#sobre">Sobre</a>
-  <a href="#milagres">Milagres</a>
-  <a href="#curiosidade">Curiosidade</a>
-</nav>
-
-<section id="sobre">
-  <h2>O que são Milagres Eucarísticos?</h2>
-  <p>
-    Milagres Eucarísticos são eventos extraordinários associados à Eucaristia,
-    nos quais, segundo a tradição católica, a hóstia consagrada manifesta sinais
-    visíveis relacionados ao corpo e sangue de Cristo.
-  </p>
-</section>
-
-<section id="milagres">
-  <h2>Milagres conhecidos</h2>
+<div class="container">
 
   <div class="card">
-    <h3>Milagre de Lanciano (Itália)</h3>
-    <p>Um dos mais antigos registros, onde a hóstia teria se transformado em carne e sangue.</p>
+    <img src="https://source.unsplash.com/400x300/?car,sport" />
+    <div class="card-content">
+      <h3>Carro Esportivo</h3>
+      <p>Velocidade e estilo em um só carro.</p>
+      <button onclick="comprar('Carro Esportivo')">Comprar</button>
+    </div>
   </div>
 
   <div class="card">
-    <h3>Milagre de Bolsena (Itália)</h3>
-    <p>Um sacerdote duvidava da presença real de Cristo e viu a hóstia sangrar durante a missa.</p>
+    <img src="https://source.unsplash.com/400x300/?car,luxury" />
+    <div class="card-content">
+      <h3>Carro Luxo</h3>
+      <p>Conforto e elegância premium.</p>
+      <button onclick="comprar('Carro Luxo')">Comprar</button>
+    </div>
   </div>
 
   <div class="card">
-    <h3>Milagre de Santarém (Portugal)</h3>
-    <p>Relato de uma hóstia que começou a sangrar após ser roubada e escondida.</p>
+    <img src="https://source.unsplash.com/400x300/?car,suv" />
+    <div class="card-content">
+      <h3>SUV Moderno</h3>
+      <p>Ideal para família e viagens.</p>
+      <button onclick="comprar('SUV Moderno')">Comprar</button>
+    </div>
   </div>
 
-  <div class="card">
-    <h3>Milagre de Buenos Aires (Argentina)</h3>
-    <p>Hóstias que teriam apresentado transformação em tecido cardíaco, segundo estudos divulgados.</p>
-  </div>
-</section>
-
-<section id="curiosidade">
-  <h2>Curiosidade</h2>
-  <p id="textoCurioso">Clique no botão para ver uma curiosidade.</p>
-  <button onclick="mostrarCuriosidade()">Mostrar curiosidade</button>
-</section>
+</div>
 
 <footer>
-  <p>Site educativo sobre tradições religiosas</p>
+  <p>© 2026 Loja de Carros - Todos os direitos reservados</p>
 </footer>
 
 <script>
-  const curiosidades = [
-    "Alguns milagres eucarísticos são investigados por séculos.",
-    "Lanciano é considerado o primeiro milagre eucarístico reconhecido.",
-    "A Igreja Católica estuda esses eventos com cautela e rigor.",
-    "Muitos relatos ocorreram durante dúvidas de fé de sacerdotes."
-  ];
-
-  function mostrarCuriosidade() {
-    const index = Math.floor(Math.random() * curiosidades.length);
-    document.getElementById("textoCurioso").innerText = curiosidades[index];
+  function comprar(nome) {
+    alert("Você escolheu: " + nome + " 🚗");
   }
 </script>
 
