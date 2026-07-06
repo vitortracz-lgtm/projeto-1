@@ -3,31 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Milagres Eucarísticos</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <title>Milagres Eucarísticos Ampliado</title>
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-    <header>
-        <h1>Milagres Eucarísticos pelo Mundo</h1>
-        <p>Conheça relatos históricos e científicos sobre a Eucaristia</p>
-    </header>
+        header {
+            background-color: #6a1b29;
+            color: white;
+            text-align: center;
+            padding: 2.5rem 1rem;
+        }
 
-    <main class="container">
-        <section class="card">
-            <h2>Milagre de Lanciano (Itália)</h2>
-            <p class="ano">Ano: Século VIII</p>
-            <p class="descricao">
-                Durante a Santa Missa, o sacerdote duvidou da presença real de Cristo. No momento da consagração, a hóstia transformou-se em Carne viva e o vinho em Sangue vivo. Análises científicas posteriores constataram que a carne é tecido muscular cardíaco humano.
-            </p>
-            <div class="interacao">
-                <button class="btn-curtir" onclick="curtirMilagre(1)">
-                    ❤️ Curtir
-                </button>
-                <span class="contador" id="contador-1">0 curtidas</span>
-            </div>
-        </section>
+        header h1 {
+            margin: 0;
+            font-size: 2.6rem;
+        }
 
-        <section class="card">
-            <h2>Milagre de Buenos Aires (Argentina)</h2>
-            <p class="ano">
+        header p {
+            margin: 0.5rem 0 0 0;
+            font-style: italic;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            border-left: 6px solid #6a1b29;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #6a1b29;
+            font-size: 1.6rem;
+        }
+
+        .ano {
+            font-weight: bold;
+            color: #c92a42;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .subtitulo-secao {
+            font-weight: bold;
+            color: #444;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .descricao {
+            line-height: 1.7;
+            text-align: justify;
+            margin-bottom: 0;
+        }
+
+        .interacao {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-curtir {
+            background-color: #6a1b29;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font
